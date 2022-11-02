@@ -25,8 +25,10 @@ use std::io::{BufWriter, Write};
 use openssl::bn::BigNum;
 use serde_json::{json, Value};
 
-use vrf::openssl::{CipherSuite, ECVRF};
-use vrf::VRF;
+//use vrf::openssl::{CipherSuite, ECVRF};
+//use vrf::VRF;
+use ecvrf::openssl::{CipherSuite, ECVRF};
+use ecvrf::VRF;
 
 fn to_hex_string(bytes: Vec<u8>) -> String {
     bytes

@@ -16,8 +16,13 @@
 //! * `P256_SHA256_TAI`: the aforementioned algorithms with `SHA256` and the `NIST P-256` curve.
 //! * `K163_SHA256_TAI`: the aforementioned algorithms with `SHA256` and the `NIST K-163` curve.
 //! * `SECP256K1_SHA256_TAI`: the aforementioned algorithms with `SHA256` and the `secp256k1` curve.
+
+
+extern crate core;
+
 pub mod dummy;
 pub mod openssl;
+pub mod vrf_ffi;
 
 /// A trait containing the common capabilities for all Verifiable Random Functions (VRF) implementations.
 pub trait VRF<PublicKey, SecretKey> {

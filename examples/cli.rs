@@ -8,8 +8,9 @@
 //! 4. Verify a VRF proof by using `verify()` function
 
 use hex;
-use vrf::openssl::{CipherSuite, ECVRF};
-use vrf::VRF;
+
+use ecvrf::openssl::{CipherSuite, ECVRF};
+use ecvrf::VRF;
 
 #[macro_use]
 extern crate clap;

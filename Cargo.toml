@@ -20,12 +20,20 @@ travis-ci = { repository = "witnet/vrf-rs", branch = "master" }
 failure = "0.1.8"
 openssl = "0.10.38"
 hmac-sha256 = "1.1.2"
+lazy_static = "1.4.0"
+hex = "0.3.2"
 
 [dev-dependencies]
 clap = "2.32.0"
 hex = "0.3.2"
 serde = { version = "1.0.90", features = ["derive"] }
 serde_json = "1.0.39"
+lazy_static = "1.4.0"
 
 [features]
 vendored = ["openssl/vendored"]
+
+
+[lib]
+name = "ecvrf" #生成dll的文件名
+crate-type = ["rlib","dylib"]
