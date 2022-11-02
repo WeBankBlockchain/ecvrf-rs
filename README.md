@@ -21,7 +21,7 @@
 ```
 ## 举例：JAVA端调用采用JNA接口模式：
 ### 先定义接口类：
-```java
+```javascript
     class LibECVrf extends Library{
         int prove_hex(String sk, String preSeed, Pointer outbuffer, long buffersize, int debuglevel);
         //pi即prove的结果，preseed是数据,公钥应依赖vrf库从私钥重新生成，而不是使用默认算法生成的公钥
