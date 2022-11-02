@@ -21,7 +21,7 @@
 ```
 ## 举例：JAVA端调用采用JNA接口模式：
 ### 先定义接口类：
-```
+```java
     class LibECVrf extends Library{
         int prove_hex(String sk, String preSeed, Pointer outbuffer, long buffersize, int debuglevel);
         //pi即prove的结果，preseed是数据,公钥应依赖vrf库从私钥重新生成，而不是使用默认算法生成的公钥
@@ -30,13 +30,14 @@
     }
 ```    
 ### 加载动态库的核心代码
-    ...通过classpath定位、配置文件等方式获得libFilePath，库默认名字为 libecvrf.so/vrecvrf.dll/libecvrf.dylib等
-        LibECVrf  ecvrf = Native.loadLibrary(libFilePath, LibECVR.class);
-
+```java    
+...通过classpath定位/配置文件等方式获得libFilePath.库默认名字为 libecvrf.so/vrecvrf.dll/libecvrf.dylib等
+   LibECVrf  ecvrf = Native.loadLibrary(libFilePath, LibECVR.class);
+```
 * Tips：如加载失败，可以将Native.loadlibrary()改成System.load()调试，错误信息更加精准（如路径不对，以及比较隐藏的依赖库版本问题等）
 
 ### java端调用示例：
-```    
+```java  
     long buffersize = 200; //分配内存空间，以待传入ffi方法,prove的字节数为81，转hex后为162
     Pointer outbuffer = new Memory(buffersize);
     int resk1 = ecvrf.prove_hex(hexkey, actualSeed, outbuffer, buffersize, debuglevel);
